@@ -9,6 +9,7 @@ A mostly Plugin less config inspired by https://github.com/radleylewis/nvim-lite
 
 - Telescope fuzzy finding
 - Treesitter syntax highlighting
+- Undotree for Undo History
 - Custom Keymaps
 
 - Redirected the terminal, statusline and keymaps into lua/
