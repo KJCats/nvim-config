@@ -12,7 +12,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright" }, -- Automatisch installierte LSPs
+        ensure_installed = { "lua_ls", "rust_analyzer" }, -- Automatisch installierte LSPs
       })
     end,
   },
@@ -28,7 +28,8 @@ return {
       lspconfig.rust_analyzer.setup({
         settings = {
           ["rust-analyzer"] = {
-            checkOnSave = {
+            checkOnSave = true,
+            check = {
               command = "clippy",
             },
           },
