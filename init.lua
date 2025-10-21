@@ -1,5 +1,5 @@
 --Theme
-vim.cmd('colorscheme catppuccin')
+vim.cmd("colorscheme catppuccin")
 
 --Keymaps
 local keymaps = require("keymaps")
@@ -8,14 +8,14 @@ keymaps.set_keymaps()
 -- LAZY.NVIM BOOTSTRAP
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -61,7 +61,7 @@ vim.opt.showmatch = true
 vim.opt.matchtime = 1
 vim.opt.cmdheight = 1
 vim.opt.completeopt = "menuone,noinsert,noselect"
-vim.opt.showmode = false
+vim.opt.showmode = true
 vim.opt.pumheight = 10
 vim.opt.pumblend = 10
 vim.opt.winblend = 0
@@ -87,7 +87,7 @@ vim.opt.autowrite = false
 -- Auto create Undo dir
 local undodir = vim.fn.expand("~/.vim/undodir")
 if vim.fn.isdirectory(undodir) == 0 then
-  vim.fn.mkdir(undodir, "p")
+	vim.fn.mkdir(undodir, "p")
 end
 
 -- Behavior settings
@@ -97,7 +97,7 @@ vim.opt.backspace = "indent,eol,start"
 vim.opt.autochdir = false
 --vim.opt.iskeyword:append("-")
 vim.opt.path:append("**")
-vim.opt.selection = "exclusive"
+vim.opt.selection = "inclusive"
 vim.opt.mouse = "a"
 --vim.opt.clipboard:append("unnamedplus")
 vim.opt.modifiable = true
@@ -106,14 +106,46 @@ vim.opt.encoding = "UTF-8"
 -- Commandline Completion
 vim.opt.wildmenu = true
 
+--Cursor Settings
+vim.cmd("set guicursor=n-v-c-ve:block,i-ci:ver25,r-cr:hor20,o:hor50")
 
+local function show_word_definition()
+	local word = vim.fn.expand("<cword>")
+	if word == "" then
+		print("No word under cursor")
+		return
+	end
 
+	local definition = vim.fn.systemlist("dict " .. vim.fn.shellescape(word))
 
+	if vim.v.shell_error ~= 0 or #definition == 0 or definition[1]:match("No definitions found") then
+		print("No definition found for '" .. word .. "'.")
+		return
+	end
 
+	local buf = vim.api.nvim_create_buf(false, true)
+	local win = vim.api.nvim_open_win(buf, true, {
+		relative = "cursor",
+		width = 80,
+		height = 20,
+		style = "minimal",
+		border = "rounded",
+		row = 1,
+		col = 0,
+	})
 
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, definition)
 
+	vim.api.nvim_set_current_win(win)
 
+	local close_win = function()
+		if vim.api.nvim_win_is_valid(win) then
+			vim.api.nvim_win_close(win, true)
+		end
+	end
 
+	vim.keymap.set("n", "q", close_win, { buffer = buf, silent = true, desc = "Close definition window" })
+	vim.keymap.set("n", "<Esc>", close_win, { buffer = buf, silent = true, desc = "Close definition window" })
+end
 
-
-
+vim.keymap.set("n", "<leader>k", show_word_definition, { desc = "Show word definition" })
