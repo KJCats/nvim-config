@@ -4,7 +4,9 @@ Do whatever you want with this config! Copy, modify, share - no restrictions.
 # My Neovim Configuration
 
 A custom config inspired by https://github.com/radleylewis/nvim-lite/tree/youtube_demo
+
 While the video focuses on a clean and plugin-less configuration,
+
 I added some (ca. 9) Plugins to improve it for my needs.
 
 ## Features
@@ -35,6 +37,7 @@ git clone https://github.com/KJCats/nvim-config.git ~/.config/nvim
 ```
 
 For a detailed video of the original setup, see here: https://www.youtube.com/watch?v=skW3clVG5Fo&t=1619s
+
 Also remember to back-up your old settings just in case.
 
 ## Plugins
@@ -76,28 +79,42 @@ Also remember to back-up your old settings just in case.
 ### Vim Keymaps
 
 `mapleader` = " "
+
 `maplocalleader` = " "
 
 Most important:
 
-`<leader>e`: open nvim's file explorer.\n
-`<leader>ff`: find files in current directory.\n 
-`<leader>rc`: open configs.\n
-`<leader>t`: open floating terminal.\n
+`<leader>e`: open nvim's file explorer.
+
+`<leader>ff`: find files in current directory.
+
+`<leader>rc`: open configs.
+
+`<leader>t`: open floating terminal.
+
 
 Here for more:
+
 [keymaps.lua](./lua/keymaps.lua)
 
 ### Plugin Keymaps:
 
-`<C-CR>`: confirm completion.\n
-`K`: show code definition.\n
-`<leader>k`: show word definition.\n
-`<leader>vd`: View diagnostics.\n
-`<leader>ca`: Code actions.\n
-`<leader>rr`: rename symbol through file.\n
-`<leader>u`: toggle undotree.\n
-`<C-f>`: fuzzyfind files in current directory.\n
+`<C-CR>`: confirm completion.
+
+`K`: show code definition.
+
+`<leader>k`: show word definition.
+
+`<leader>vd`: View diagnostics.
+
+`<leader>ca`: Code actions.
+
+`<leader>rr`: rename symbol through file.
+
+`<leader>u`: toggle undotree.
+
+`<C-f>`: fuzzyfind files in current directory.
+
 `<C-f>g`: live grep in current directory.\n
 `<C-f>b`: find buffers.\n
 `<C-f>h`: help tags.
