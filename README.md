@@ -69,7 +69,7 @@ Also remember to back-up your old settings just in case.
 
 - rust-tools:
 
-[rust-tools](./lua/plugins/rust-tools.lua)
+[rust-tools.lua](./lua/plugins/rust-tools.lua)
 
 ## Keymaps
 
