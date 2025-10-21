@@ -80,24 +80,24 @@ Also remember to back-up your old settings just in case.
 
 Most important:
 
-`<leader>e`: open nvim's file explorer
-`<leader>ff`: find files in current directory. 
-`<leader>rc`: open configs
-`<leader>t`: open floating terminal
+`<leader>e`: open nvim's file explorer.\n
+`<leader>ff`: find files in current directory.\n 
+`<leader>rc`: open configs.\n
+`<leader>t`: open floating terminal.\n
 
 Here for more:
 [keymaps.lua](./lua/keymaps.lua)
 
 ### Plugin Keymaps:
 
-`<C-CR>`: confirm completion
-`K`: show code definition
-`<leader>k`: show word definition
-`<leader>vd`: View diagnostics
-`<leader>ca`: Code actions
-`<leader>rr`: rename symbol through file
-`<leader>u`: toggle undotree
-`<C-f>`: fuzzyfind files in current directory
-`<C-f>g`: live grep in current directory
-`<C-f>b`: find buffers
-`<C-f>h`: help tags
+`<C-CR>`: confirm completion.\n
+`K`: show code definition.\n
+`<leader>k`: show word definition.\n
+`<leader>vd`: View diagnostics.\n
+`<leader>ca`: Code actions.\n
+`<leader>rr`: rename symbol through file.\n
+`<leader>u`: toggle undotree.\n
+`<C-f>`: fuzzyfind files in current directory.\n
+`<C-f>g`: live grep in current directory.\n
+`<C-f>b`: find buffers.\n
+`<C-f>h`: help tags.
